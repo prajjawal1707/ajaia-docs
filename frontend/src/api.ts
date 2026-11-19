@@ -1,6 +1,7 @@
 import type { Doc, Share, User } from './types'
 
-const API = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').replace(/\/$/, '')
+const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '')
+const API = API_BASE.endsWith('/api') ? API_BASE : `${API_BASE}/api`
 let token = localStorage.getItem('ajaia_token') || ''
 
 export function setToken(value: string) {
